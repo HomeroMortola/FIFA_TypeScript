@@ -1,17 +1,14 @@
 {
-  "name": "fifa_typescript",
+  "name": "fifa",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "main.js",
+  "type": "commonjs",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only main.ts"
+    "dev": "node main.js",
+    "start": "node main.js"
   },
   "dependencies": {
+    "cors": "^2.8.6",
     "express": "^5.2.1"
-  },
-  "devDependencies": {
-    "@types/express": "^5.0.6",
-    "@types/node": "^25.6.0",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "^6.0.2"
   }
 }
