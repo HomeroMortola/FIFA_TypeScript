@@ -4,12 +4,10 @@ const cors = require("cors");
 const app = express();
 const PORT = 3000;
 
-// --- Middlewares ---
 app.use(cors()); 
 app.use(express.json()); 
 
 // Endpoints
-
 app.get("/", (req, res) => {
     res.send("Servidor de Tickets Funcionando");
 });
@@ -36,7 +34,7 @@ app.post("/comprar-ticket", (req, res) => {
     });
 });
 
-// --- Iniciar Servidor ---
+// Iniciar Servidor
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
