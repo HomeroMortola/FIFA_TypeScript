@@ -1,7 +1,7 @@
-class Product {
+class Glases {
         
    /**
-   * @param {ProductBuilder} builder 
+   * @param {GlasesBuilder} builder 
    */
 
     constructor(builder) {
@@ -9,6 +9,7 @@ class Product {
         this.name = builder.productName;
         this.price = builder.price;
         this.stock = builder.stock;
+        this.color = builder.color;
         Object.freeze(this);
     }
 

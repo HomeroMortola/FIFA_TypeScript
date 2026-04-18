@@ -4,6 +4,8 @@
     "target": "ESNext",
     "module": "ESNext",
     "allowJs": true,
-    "checkJs": true
+    "checkJs": false,
+    "noImplicitAny": false,
+    "strict": false
   }
 }

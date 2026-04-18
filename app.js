@@ -12,7 +12,6 @@ app.get("/", (req, res) => {
     res.send("Servidor de Tickets Funcionando");
 });
 
-
 app.post("/comprar-ticket", (req, res) => {
     const { nombreComprador, evento, cantidad } = req.body;
 

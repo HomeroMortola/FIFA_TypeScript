@@ -1,10 +1,11 @@
-class ProductBuilder {
+class GlasesBuilder {
 
     constructor() {
         this.id = null;
         this.name = "";
         this.price = 0;
         this.stock = 0;
+        this.color = "";
     }
 
     /**
@@ -44,10 +45,19 @@ class ProductBuilder {
 
 
     /**
-     * @returns {Product}
+     * @param {string} color
+     */
+
+    setColor(color) {
+        this.color = color;
+        return this;
+    }
+
+    /**
+     * @returns {Glases}
      */
     build() {
-        return new Product(this);
+        return new Glases(this);
     }
 }
 
