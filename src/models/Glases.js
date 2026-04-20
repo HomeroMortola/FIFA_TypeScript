@@ -1,14 +1,12 @@
-class Glases {
+class Glases extends Product {
         
    /**
    * @param {GlasesBuilder} builder 
    */
 
     constructor(builder) {
-        this.id = builder.id;
+        super(builder.id, builder.price, builder.stock);
         this.name = builder.productName;
-        this.price = builder.price;
-        this.stock = builder.stock;
         this.color = builder.color;
         Object.freeze(this);
     }

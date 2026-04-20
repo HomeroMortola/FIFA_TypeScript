@@ -1,14 +1,13 @@
-class Bandanna {        
+class Bandanna extends Product {        
    /**
    * @param {BandannaBuilder} builder 
    */
-
     constructor(builder) {
-        this.id = builder.id;
+        super(builder.id, builder.price, builder.stock);
         this.size = builder.size;
         this.color = builder.color;
-        this.price = builder.price;
-        this.stock = builder.stock;
         Object.freeze(this);
     }
 }
+
+
