@@ -1,19 +1,8 @@
-class BandannaBuilder {
+class BandannaBuilder extends ProductBuilder {
     constructor() {
-        this.id = 0;
+        super();
         this.size = "";
         this.color = "";
-        this.price = 0;
-        this.stock = 0;
-    }
-
-    /**
-     * @param {number} id
-     */
-
-    setId(id) {
-        this.id = id;
-        return this;
     }
 
 
@@ -33,28 +22,12 @@ class BandannaBuilder {
         return this;
     }
 
-    /**
-     * @param {number} price
-     */
-    setPrice(price) {
-        this.price = price;
-        return this;
-    }
 
     /**
-     * @param {number} stock
-     */
-    setStock(stock) {
-        this.stock = stock;
-        return this;
-    }
-
-
-    /**
-     * @returns {Client}
+     * @returns {Bandanna}
      */
     build() {
-        return new Client(this);
+        return new Bandanna(this);
     }
 }
 

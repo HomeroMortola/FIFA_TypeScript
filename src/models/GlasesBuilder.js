@@ -1,21 +1,11 @@
-class GlasesBuilder {
+class GlasesBuilder extends ProductBuilder {
 
     constructor() {
-        this.id = null;
+        super();
         this.name = "";
-        this.price = 0;
-        this.stock = 0;
         this.color = "";
     }
 
-    /**
-     * @param {number} id
-     */
-
-    setId(id) {
-        this.id = id;
-        return this;
-    }
 
 
     /**
@@ -23,23 +13,6 @@ class GlasesBuilder {
      */
     setName(productName) {
         this.productName = productName;
-        return this;
-    }
-
-    /**
-     * @param {number} price
-     */
-    setPrice(price) {
-        this.price = price;
-        return this;
-    }
-
-    /**
-     * @param {number} stock
-     */
-
-    setStock(stock) {
-        this.stock = stock;
         return this;
     }
 

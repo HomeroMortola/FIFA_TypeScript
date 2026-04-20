@@ -1,23 +1,12 @@
-class ProductBuilder {
+class VinylsBuilder extends ProductBuilder {
 
     constructor() {
-        this.id = null;
+        super();
         this.name_vinyls= "";
-        this.price = 0;
-        this.stock = 0;
         this.year = 0;
         this.genre = "";
         this.artist = "";
-    }
-
-    /**
-     * @param {number} id
-     */
-
-    setId(id) {
-        this.id = id;
-        return this;
-    }
+    }   
 
 
     /**
