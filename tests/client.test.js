@@ -67,7 +67,7 @@ describe('Client', () => {
     });
 
 });
-//
+
 /*it('no permite modificar sus propiedades una vez creado', () => {
     const client = new ClientBuilder()
         .setId(1)
