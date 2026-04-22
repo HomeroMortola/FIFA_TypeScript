@@ -6,6 +6,7 @@ class ProductRepository {
         this.products = [];
         ProductRepository.instance = this;
     }
+    
     /**
      * @param {Product} product
      */

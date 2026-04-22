@@ -7,7 +7,6 @@ async function fetchInventory() {
         if (!response.ok) throw new Error("No se pudo conectar con el servidor");
 
         const productos = await response.json();
-
         
         // Limpiamos el contenedor antes de renderizar
         grid.innerHTML = "";
@@ -16,7 +15,6 @@ async function fetchInventory() {
             grid.innerHTML = "<p class='sec-sub'>No hay productos disponibles por ahora.</p>";
             return;
         }
-
         // Renderizamos usando directamente los datos de la base de datos
         productos.forEach(p => {
             const imageurl = p.imageurl ? p.imageurl : 'https://via.placeholder.com/300x200?text=Sin+Imagen';
