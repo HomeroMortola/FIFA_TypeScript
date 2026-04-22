@@ -26,7 +26,7 @@ export class ClientBuilder {
      */
     setName(name) {
     if (!name || name.trim() === "") {
-        throw new Error("El nombre no puede estar vacío");
+        throw new Error("el nombre no puede estar vacio");
     }
     this.name = name;
     return this;
@@ -56,7 +56,7 @@ export class ClientBuilder {
 
     setDni(dni) {
     if (typeof dni === "string" && !/^\d+$/.test(dni)) {  //  /^\d+$/ siginifica solo numero del 0 al 9
-        throw new Error("El DNI solo puede contener números");
+        throw new Error("el DNI solo puede contener numeros");
     }
     this.dni = dni;
     return this;
