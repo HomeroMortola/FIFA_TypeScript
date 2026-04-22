@@ -8,7 +8,9 @@ async function fetchInventory() {
 
         const productos = await response.json();
 
-        // Limpiamos el contenedor (el "Cargando...")
+
+        const imgurl = p.imageurl 
+        // Limpiamos el contenedor antes de renderizar
         grid.innerHTML = "";
 
         if (productos.length === 0) {
@@ -20,6 +22,7 @@ async function fetchInventory() {
         productos.forEach(p => {
             grid.innerHTML += `
                 <div class="prod-card">
+                    <img src="${p.imageurl}" alt="${p.nombre}" class="prod-img">
                     <div class="prod-info">
                         <div class="prod-cat">Colección Especial</div>
                         <h3 class="prod-name">${p.nombre}</h3>
