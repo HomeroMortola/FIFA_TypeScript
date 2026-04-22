@@ -8,11 +8,10 @@ async function fetchInventory() {
 
         const productos = await response.json();
 
-
-        const imgurl = p.imageurl 
+        
         // Limpiamos el contenedor antes de renderizar
         grid.innerHTML = "";
-
+        
         if (productos.length === 0) {
             grid.innerHTML = "<p class='sec-sub'>No hay productos disponibles por ahora.</p>";
             return;
@@ -20,9 +19,10 @@ async function fetchInventory() {
 
         // Renderizamos usando directamente los datos de la base de datos
         productos.forEach(p => {
+            const imgUrl = p.imgurl || 'https://via.placeholder.com/300x200?text=Sin+Imagen';
             grid.innerHTML += `
                 <div class="prod-card">
-                    <img src="${p.imageurl}" alt="${p.nombre}" class="prod-img">
+                    <img src="${imgUrl}" alt="${p.nombre}" class="prod-img">
                     <div class="prod-info">
                         <div class="prod-cat">Colección Especial</div>
                         <h3 class="prod-name">${p.nombre}</h3>
