@@ -55,12 +55,8 @@
     .masthead {
   text-align: center;
   padding: 32px 24px 0;
-  background: var(--masthead-bg);
-
-  
   width: 100vw;
   margin-left: calc(-50vw + 50%);
-  
   box-shadow: 0 5px 18px rgb(58, 25, 4);
   margin-bottom: 0;
   position: relative;
@@ -117,8 +113,7 @@
 
     .masthead-rule {
       height: 5px;
-      border-top: 2px solid #c49898;
-      border-bottom: 1px solid #c49898;
+      border-top: 2px;
       margin-top: 14px;
     }
 
@@ -611,17 +606,22 @@
     /*IMÁGENES POR PÁGINA */
 
 .home-page .masthead {
-  background-image: 
+  background: 
     linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
     url("image1.png");
+  background-size: cover;
+  background-position: center;
 }
 
 .vinilo-page .masthead {
-  background-image: 
+
+ background: 
     linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
     url("L\ o\ r\ e\ e\ e\ h\ h.jpg");
+  background-size: cover;
+  background-position: center;
 }
-
+  
 .panuelo-page .masthead {
   background-image: 
     linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
