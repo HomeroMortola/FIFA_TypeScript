@@ -28,11 +28,13 @@ describe('ClientBuilder', () => {
         expect(client.location).toBe('Corrientes');
     });
 
+
     it('falla si el nombre esta vacio', () => {
         expect(() => {
             builder.setName('').build();
         }).toThrow('el nombre no puede estar vacio');
     });
+
 
     it('falla si el nombre es solo espacios', () => {
         expect(() => {
@@ -40,15 +42,29 @@ describe('ClientBuilder', () => {
         }).toThrow('el nombre no puede estar vacio');
     });
 
+
+    it('falla si el apellido esta vacio', () => {
+        expect(() => {
+            builder.setSurname('').build();
+        }).toThrow('el apellido no puede estar vacio');
+    });
+
+
     it('falla si el DNI contiene letras', () => {
         expect(() => {
             builder.setDni('ABC123').build();
         }).toThrow('el DNI solo puede contener numeros');
     });
 
-    it('acepta un DNI numerico válido', () => {
+    it('acepta un DNI numerico valido', () => {
         const client = builder.setDni(12345678).build();
         expect(client.dni).toBe(12345678);
+    });
+
+    it('falla si el DNI tiene menos de 7 digitos', () => {
+    expect(() => {
+        builder.setDni(123).build();
+    }).toThrow('el DNI debe tener entre 7 y 8 digitos');
     });
 
 });
