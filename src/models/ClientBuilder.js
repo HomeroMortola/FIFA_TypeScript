@@ -30,7 +30,7 @@ class ClientBuilder {
     /**
      * @param {string} surName
      */
-    setPrice(surName) {
+    setSurName(surName) {
         this.surName = surName;
         return this;
     }
@@ -39,7 +39,7 @@ class ClientBuilder {
      * @param {number} phone
      */
 
-    setStock(phone) {
+    setPhone(phone) {
         this.phone = phone;
         return this;
     }
@@ -49,7 +49,7 @@ class ClientBuilder {
      * @param {number} dni
      */
 
-    setColor(dni) {
+    setDni(dni) {
         this.dni = dni;
         return this;
     }

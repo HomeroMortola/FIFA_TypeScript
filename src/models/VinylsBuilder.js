@@ -2,7 +2,6 @@ class VinylsBuilder extends ProductBuilder {
 
     constructor() {
         super();
-        this.name_vinyls= "";
         this.year = 0;
         this.genre = "";
         this.artist = "";
@@ -10,39 +9,12 @@ class VinylsBuilder extends ProductBuilder {
 
     reset() {
         super.reset();
-        this.name_vinyls = "";
         this.year = 0;
         this.genre = "";
         this.artist = "";
         return this;
     }
 
-
-
-    /**
-     * @param {string} VinylsName
-     */
-    setName(VinylsName) {
-        this.VinylsName = VinylsName;
-        return this;
-    }
-
-    /**
-     * @param {number} price
-     */
-    setPrice(price) {
-        this.price = price;
-        return this;
-    }
-
-    /**
-     * @param {number} stock
-     */
-
-    setStock(stock) {
-        this.stock = stock;
-        return this;
-    }
 
     /**
      * @param {string} artist
