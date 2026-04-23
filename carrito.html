@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<title>Producto</title>
+
+<style>
+body{
+    font-family:'Inter',sans-serif;
+    background:#f9fafb;
+    padding:50px;
+}
+
+/* CONTENEDOR */
+.producto{
+    display:flex;
+    gap:40px;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    animation:fade 0.5s ease;
+}
+
+img{
+    width:400px;
+    border-radius:15px;
+}
+
+.info{
+    max-width:400px;
+}
+
+button{
+    margin-top:20px;
+    padding:10px 20px;
+    border:none;
+    background:#111;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#333;
+}
+
+/* ANIMACION */
+@keyframes fade{
+    from{opacity:0;transform:translateY(20px);}
+    to{opacity:1;transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="producto" id="detalle"></div>
+
+<script>
+const productos = JSON.parse(localStorage.getItem("productos"));
+const id = localStorage.getItem("productoSeleccionado");
+
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+const producto = productos.find(p => p.id == id);
+
+document.getElementById("detalle").innerHTML = `
+    <img src="${producto.img}">
+    <div class="info">
+        <h1>${producto.nombre}</h1>
+        <p>${producto.desc}</p>
+        <h2>$${producto.precio}</h2>
+        <button onclick="agregar()">Agregar al carrito</button>
+    </div>
+`;
+
+function agregar(){
+    carrito.push(producto);
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+}
+</script>
+
+</body>
+</html>
