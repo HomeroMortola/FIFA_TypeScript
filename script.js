@@ -12,7 +12,7 @@ const SESSION_ID = getSessionId();
 const API_URL = 'http://localhost:3000';
 
 async function fetchInventory() {
-    const grid = document.getElementById('prod-grid');
+    const grid = document.querySelector('.grid-product');
     try {
         const response = await fetch('http://localhost:3000/productos');
         
