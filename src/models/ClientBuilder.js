@@ -35,8 +35,8 @@ export class ClientBuilder {
     /**
      * @param {string} surName
      */
-    setSurname(surName) {
-       if (!surname || surname.trim() === "") {
+    setSurname(surname) {
+    if (!surname || surname.trim() === "") {
         throw new Error("el apellido no puede estar vacio");
     }
     this.surname = surname;
@@ -64,7 +64,7 @@ export class ClientBuilder {
     
     const dniString = String(dni);
     if (dniString.length !== 8) {
-        throw new Error("el DNI debe tener 8 digitos");
+        throw new Error("el DNI debe tener exactamente 8 digitos");
     }
     
     this.dni = dni;
