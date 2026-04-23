@@ -61,10 +61,10 @@ describe('ClientBuilder', () => {
         expect(client.dni).toBe(12345678);
     });
 
-    it('falla si el DNI tiene menos de 7 digitos', () => {
+    it('falla si el DNI no tiene 8 digitos', () => {
     expect(() => {
         builder.setDni(123).build();
-    }).toThrow('el DNI debe tener entre 7 y 8 digitos');
+    }).toThrow('El DNI debe tener exactamente 8 dígitos');
     });
 
 });

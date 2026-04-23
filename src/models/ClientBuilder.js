@@ -36,8 +36,11 @@ export class ClientBuilder {
      * @param {string} surName
      */
     setSurname(surName) {
-        this.surname = surName;
-        return this;
+       if (!surname || surname.trim() === "") {
+        throw new Error("el apellido no puede estar vacio");
+    }
+    this.surname = surname;
+    return this;
     }
 
     /**
@@ -58,6 +61,12 @@ export class ClientBuilder {
     if (typeof dni === "string" && !/^\d+$/.test(dni)) {  //  /^\d+$/ siginifica solo numero del 0 al 9
         throw new Error("el DNI solo puede contener numeros");
     }
+    
+    const dniString = String(dni);
+    if (dniString.length !== 8) {
+        throw new Error("el DNI debe tener 8 digitos");
+    }
+    
     this.dni = dni;
     return this;
 }
