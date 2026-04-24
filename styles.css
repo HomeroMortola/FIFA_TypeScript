@@ -131,7 +131,7 @@
       margin-bottom: 40px;
       overflow: hidden;
     }
-    
+
     .nav-item {
       font-family: var(--f-gothic);
       font-size: 10px;
@@ -587,9 +587,7 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* ═══════════════════════════════════════════
-       ÉXITO
-    ═══════════════════════════════════════════ */
+
     .success-screen { text-align: center; padding: 80px 20px; max-width: 560px; margin: 0 auto; }
     .success-ornament {
       font-family: var(--f-fraktur);
@@ -659,7 +657,7 @@
 }
 .prod-visual {
   overflow: hidden;
-  height: 200px; /* ← altura fija igual para todos */
+  height: 200px; 
 }
 
 .prod-visual img {
@@ -669,7 +667,7 @@
   display: block;
   transition: transform .3s;
 }
-/* EFECTO AL PASAR EL MOUSE */
+
 .producto:hover {
   transform: scale(1.1);
   z-index: 2;
@@ -683,7 +681,7 @@
 }
 
 .producto {
-  flex: 1; /* TODOS se adaptan al ancho */
+  flex: 1; 
   max-width: 200px;
 }
 
@@ -715,4 +713,92 @@
   margin-bottom: 16px;
   padding-bottom: 6px;
   border-bottom: 2px solid var(--ink);
+}
+
+.grid-product {
+    display: grid;
+    /* Crea columnas de mínimo 280px que se ajustan solas al ancho de la pantalla */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 2. La tarjeta del producto (Estética Vintage) */
+.prod-card {
+    background-color: #fdf6e3; /* Color crema de fondo */
+    border: 2px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.prod-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* 3. El contenedor de la imagen: ACÁ ACHICAMOS LA IMAGEN */
+.prod-img-container {
+    width: 100%;
+    height: 200px; /* Altura fija para que todas sean iguales */
+    background-color: #e0e0e0; /* El gris de fondo que se ve en tu imagen */
+    border-radius: 8px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* La imagen dentro del contenedor */
+.prod-img {
+    max-width: 85%; /* No ocupa todo el ancho, queda "centrada" y más chica */
+    max-height: 85%;
+    object-fit: contain;
+    mix-blend-mode: multiply; /* Para que el fondo blanco de los JPG desaparezca */
+}
+
+/* 4. Tipografía y Textos */
+.prod-cat {
+    font-size: 0.75rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.prod-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    margin: 5px 0;
+    color: #1a1a1a;
+}
+
+.prod-price {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #2a2a2a;
+    margin-bottom: 10px;
+}
+
+/* 5. El botón "COMPRAR" estilo Retro */
+.buy-btn {
+    background-color: #5d1c24; /* Color bordó vintage */
+    color: #fdf6e3;
+    border: none;
+    border-radius: 6px;
+    padding: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: auto; /* Empuja el botón siempre al fondo de la tarjeta */
+    transition: background 0.3s;
+}
+
+.buy-btn:hover {
+    background-color: #3d1218;
 }
