@@ -11,18 +11,23 @@ const getSessionId = () => {
 const SESSION_ID = getSessionId();
 const API_URL = 'http://localhost:3000';
 
-async function fetchInventory() {
+async function fetchInventory(category = null) {
     const grid = document.querySelector('.grid-product');
     try {
         const response = await fetch('http://localhost:3000/productos');
         
         if (!response.ok) throw new Error("No se pudo conectar con el servidor");
 
-        const productos = await response.json();
+        let productos = await response.json();
+
+        // Filtrar por categoría si se proporciona
+        if (category) {
+            productos = productos.filter(p => p.type === category || p.category === category);
+        }
 
         // Limpiamos el contenedor antes de renderizar
         grid.innerHTML = "";
-        
+
         if (productos.length === 0) {
             grid.innerHTML = "<p class='sec-sub'>No hay productos disponibles por ahora.</p>";
             return;
@@ -192,8 +197,4 @@ async function actualizarCarrito() {
     }
 }
 
-// Ejecutar cuando la página esté lista
-document.addEventListener('DOMContentLoaded', () => {
-    fetchInventory();
-    actualizarCarrito();
-});
+
