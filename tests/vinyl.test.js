@@ -9,12 +9,11 @@ describe('VinylsBuilder', () => {
         builder = new VinylsBuilder();
     });
 
-    // ── Construcción correcta ──────────────────────────────
-
-    it('construye un vinilo con todos los datos correctos', () => {
+    
+    it('construye un vinilo con todos los datos correctos', () => { //verificando que se este construyendo
         const vinyl = builder
             .setId(3)
-            .setName('Abbey Road')
+            .setName('Aaaaaa')
             .setPrice(5000)
             .setStock(3)
             .setArtist('The Beatles')
@@ -23,7 +22,7 @@ describe('VinylsBuilder', () => {
             .build();
 
         expect(vinyl.id).toBe(3);
-        expect(vinyl.productName).toBe('Abbey Road');
+        expect(vinyl.productName).toBe('Aaaaaa');
         expect(vinyl.price).toBe(5000);
         expect(vinyl.stock).toBe(3);
         expect(vinyl.artist).toBe('The Beatles');
@@ -31,69 +30,69 @@ describe('VinylsBuilder', () => {
         expect(vinyl.year).toBe(1969);
     });
 
-    // ── Validaciones heredadas de ProductBuilder ───────────
+    //verificando que se este heredando de productBuilder
 
-    it('falla si el nombre está vacío', () => {
+    it('falla si el nombre esta vacio', () => {
         expect(() => {
             builder.setName('').build();
-        }).toThrow('El nombre del producto no puede estar vacío');
+        }).toThrow('el nombre del producto no puede estar vacio');
     });
 
     it('falla si el precio es cero', () => {
         expect(() => {
             builder.setPrice(0).build();
-        }).toThrow('El precio debe ser un número mayor a cero');
+        }).toThrow('el precio debe ser un numero mayor a cero');
     });
 
     it('falla si el precio es negativo', () => {
         expect(() => {
             builder.setPrice(-100).build();
-        }).toThrow('El precio debe ser un número mayor a cero');
+        }).toThrow('el precio debe ser un numero mayor a cero');
     });
 
     it('falla si el stock es negativo', () => {
         expect(() => {
             builder.setStock(-1).build();
-        }).toThrow('El stock no puede ser negativo');
+        }).toThrow('el stock no puede ser negativo');
     });
 
-    // ── Validaciones propias de Vinyls ─────────────────────
+    // viendo que se cumpla los datos propios de vinyl
 
     it('falla si el artista está vacío', () => {
         expect(() => {
             builder.setArtist('').build();
-        }).toThrow('El artista no puede estar vacío');
+        }).toThrow('el artista no puede estar vacio');
     });
 
-    it('falla si el género está vacío', () => {
+    it('falla si el genero está vacio', () => {
         expect(() => {
             builder.setGenre('').build();
-        }).toThrow('El género no puede estar vacío');
+        }).toThrow('el género no puede estar vacio');
     });
 
-    it('falla si el año es menor a 1900', () => {
+    it('falla si el year es menor a 1900', () => {
         expect(() => {
             builder.setYear(1800).build();
-        }).toThrow('El año debe ser un número entre 1900 y el año actual');
+        }).toThrow('el year debe ser un numero entre 1900 y el year actual');
     });
 
-    it('falla si el año es mayor al año actual', () => {
+    it('falla si el year es mayor al year actual', () => {
         expect(() => {
             builder.setYear(2099).build();
-        }).toThrow('El año debe ser un número entre 1900 y el año actual');
+        }).toThrow('el year debe ser un numero entre 1900 y el year actual');
     });
 
-    // ── Reset automático después del build ─────────────────
+    //Reset automatico despues del build
 
     it('resetea los valores después de build', () => {
         builder
             .setId(3)
-            .setName('Abbey Road')
+            .setName('Aaaaaa')
             .setPrice(5000)
             .setStock(3)
-            .setArtist('The Beatles')
-            .setGenre('Rock')
-            .setYear(1969)
+            .setArtist('Sabrina Carpenter')
+            .setGenre('Pop')
+            .setYear(2025)
             .build();
 
         expect(builder.productName).toBe('');
@@ -103,17 +102,17 @@ describe('VinylsBuilder', () => {
         expect(builder.year).toBe(0);
     });
 
-    // ── Inmutabilidad ──────────────────────────────────────
+    //debe ser inmutable
 
     it('no permite modificar sus propiedades una vez creado', () => {
         const vinyl = builder
             .setId(3)
-            .setName('Abbey Road')
+            .setName('Aaaaaa')
             .setPrice(5000)
             .setStock(3)
-            .setArtist('The Beatles')
-            .setGenre('Rock')
-            .setYear(1969)
+            .setArtist('Sabrina Carpenter')
+            .setGenre('Pop')
+            .setYear(2025)
             .build();
 
         expect(() => {
