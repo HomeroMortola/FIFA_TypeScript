@@ -11,7 +11,7 @@ export class ProductRepository {
 
     async saveProduct(product) {
         
-        const { id, name, price, stock, category, description, ...rest } = product;
+        const { id, name, price, stock, category, description, image_url, ...rest } = product;
 
         const dataForSupabase = {
             nombre: name,        
@@ -19,6 +19,7 @@ export class ProductRepository {
             stock: stock,
             category: category,
             descripcion: description,
+            image_url: image_url,
             metadata: rest   
         };
 

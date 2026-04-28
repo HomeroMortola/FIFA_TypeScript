@@ -9,6 +9,7 @@ export class ProductBuilder {
         this.price = 0;
         this.stock = 0
         this.productName = "";
+        this.image_url = "";
         return this;
     }
 
@@ -34,6 +35,7 @@ export class ProductBuilder {
         return this;
     }
 
+
     /**
      * @param {number} stock
      */
@@ -46,7 +48,18 @@ export class ProductBuilder {
         return this;
     }
 
+    /**
+     * @param {string} image_url
+     */
+    setImageUrl(image_url) {
+        if (!image_url || image_url.trim() === "") {
+            throw new Error("la URL de la imagen no puede estar vacia");
+        }
+        this.image_url = image_url;
+        return this;
+    }
 
+    
     /**
      * @returns {Product}
      */
