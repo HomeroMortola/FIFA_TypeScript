@@ -34,7 +34,7 @@ export const PRODUCT_CONFIG = {
     Bandanna : {
         builder: () => new BandannaBuilder(),
         fields: [
-            {id: 'size', label: 'Talla', type: 'select', options: ['S', 'M', 'L', 'XL']},
+            {id: 'size', label: 'Talla', type: 'select', options: ['S', 'M', 'L', 'XL'], setter: 'setSize'},
             {id: 'color', label: 'Color', type: 'text', setter: 'setColor'}
         ]
     }
