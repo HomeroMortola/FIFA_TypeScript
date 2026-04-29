@@ -60,12 +60,12 @@ function render(list) {
 
     list.forEach(p => {
         // Usamos encodeURI por si la URL de la imagen tiene espacios
-        const imageURl = p.image_url ? p.image_url : 'https://via.placeholder.com/300';
+        const image_url = p.image_url ? p.image_url : 'https://via.placeholder.com/300';
         
         grid.innerHTML += `
             <div class="prod-card">
                 <div class="prod-img-container">
-                    <img src="${imageURl}" alt="${p.name}" class="prod-img">
+                    <img src="${image_url}" alt="${p.name}" class="prod-img">
                 </div>
                 <div class="prod-info">
                     <h3 class="prod-name">${p.name}</h3>

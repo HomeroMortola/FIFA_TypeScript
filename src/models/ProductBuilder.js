@@ -5,22 +5,11 @@ export class ProductBuilder {
     }
 
     reset() {
-        this.id = 0;
+        this.id = null;
         this.price = 0;
         this.stock = 0
         this.productName = "";
-        return this;
-    }
-
-    /**
-     * @param {number} id
-     */
-
-    setId(id) {
-        if (typeof id !== "number" || id <= 0) {
-            throw new Error("l id debe ser un numero mayor a cero");
-        }
-        this.id = id;
+        this.image_url = "";
         return this;
     }
 
@@ -46,6 +35,7 @@ export class ProductBuilder {
         return this;
     }
 
+
     /**
      * @param {number} stock
      */
@@ -58,7 +48,18 @@ export class ProductBuilder {
         return this;
     }
 
+    /**
+     * @param {string} image_url
+     */
+    setImageUrl(image_url) {
+        if (!image_url || image_url.trim() === "") {
+            throw new Error("la URL de la imagen no puede estar vacia");
+        }
+        this.image_url = image_url;
+        return this;
+    }
 
+    
     /**
      * @returns {Product}
      */
