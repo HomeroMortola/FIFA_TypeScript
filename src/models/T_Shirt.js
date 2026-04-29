@@ -1,4 +1,4 @@
-class T_Shirt extends Product {        
+export class T_Shirt extends Product {        
    /**
    * @param {T_ShirtBuilder} builder 
    */

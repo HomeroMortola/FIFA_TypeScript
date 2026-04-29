@@ -1,5 +1,5 @@
+import { Product } from './Product.js';
 import { ProductBuilder } from './ProductBuilder.js';
-import { Glases } from './Glases.js';
 
 export class GlasesBuilder extends ProductBuilder {
 

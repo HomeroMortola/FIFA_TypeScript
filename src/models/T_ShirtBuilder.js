@@ -1,15 +1,11 @@
-class T_ShirtBuilder extends ProductBuilder {
+import { Product } from './Product.js';
+import { ProductBuilder } from './ProductBuilder.js';
+export class T_ShirtBuilder extends ProductBuilder {
+
     constructor() {
         super();
         this.size = "";
         this.color = "";
-    }
-
-    reset() {
-        super.reset();
-        this.size = "";
-        this.color = "";
-        return this;
     }
 
 
@@ -34,9 +30,7 @@ class T_ShirtBuilder extends ProductBuilder {
      * @returns {T_Shirt}
      */
     build() {
-        const t_shirt = new T_Shirt(this);
-        this.reset();
-        return t_shirt;
+        return new T_Shirt(this);
     }
 }
 

@@ -1,6 +1,5 @@
+import { Product } from './Product.js';
 import { ProductBuilder } from './ProductBuilder.js';
-import { Vinyls } from './Vinyls.js';
-
 export class VinylsBuilder extends ProductBuilder {
 
     constructor() {

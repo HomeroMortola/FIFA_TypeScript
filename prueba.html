@@ -63,93 +63,45 @@
 </script>
 
     <script type="module">
-            // Importamos lo necesario (Ajustá las rutas según tu carpeta src)
-        import { PRODUCT_CONFIG } from './src/utils/ProductFactory.js';
-        import { ProductRepository } from './src/repositories/ProductRepository.js';
+    import { PRODUCT_CONFIG } from './src/utils/ProductFactory.js';
 
-        const repo = new ProductRepository();
-        const selectTipo = document.getElementById('tipo-producto');
-        const contenedorCampos = document.getElementById('campos-dinamicos');
+    // Envolvemos todo en un listener para esperar al HTML
+    document.addEventListener('DOMContentLoaded', () => {
+    const selectTipo = document.getElementById('tipo-producto');
+    const contenedorCampos = document.getElementById('campos-dinamicos');
 
-        // Esta es la pieza que falta: escucha cuando cambias el select
+    // DEBUG: Esto te dirá en la consola (F12) si encontró los elementos
+    console.log("Select encontrado:", !!selectTipo);
+    console.log("Contenedor encontrado:", !!contenedorCampos);
+
+    if (selectTipo && contenedorCampos) {
         selectTipo.addEventListener('change', (e) => {
             const tipo = e.target.value;
             const config = PRODUCT_CONFIG[tipo];
 
-            // Limpiamos el contenedor
+            // Limpiamos siempre antes de dibujar
             contenedorCampos.innerHTML = '';
 
             if (config) {
-                // Recorremos los campos que definiste en tu ProductFactory.js
+                console.log(`Dibujando campos para: ${tipo}`);
+                
                 config.fields.forEach(campo => {
                     const div = document.createElement('div');
-                    div.style.marginBottom = "10px";
+                    div.style.marginBottom = "15px";
                     
-                    // IMPORTANTE: el id debe empezar con 'extra-' para que 
-                    // coincida con lo que busca tu función ejecutarGuardado
+                    // IMPORTANTE: id con prefijo "extra-" para el guardado
                     div.innerHTML = `
-                        <label style="display:block;">${campo.label}:</label>
-                        <input type="${campo.type}" id="extra-${campo.id}" placeholder="Ingrese ${campo.label.toLowerCase()}">
+                        <label style="display:block; font-weight:bold;">${campo.label}:</label>
+                        <input type="${campo.type}" id="extra-${campo.id}" class="input-dinamico">
                     `;
                     contenedorCampos.appendChild(div);
                 });
+            } else {
+                console.warn("No se encontró configuración para el tipo:", tipo);
             }
         });
-
-        async function ejecutarGuardado() {
-            // 1. Capturar elementos básicos
-            const tipo = document.getElementById('tipo-producto').value;
-            const fileInput = document.getElementById('foto-input');
-            
-            if (!tipo) return alert("Por favor, seleccioná un tipo de producto.");
-
-            try {
-                // 2. Subir la imagen primero (si el usuario seleccionó una)
-                let urlImagen = "";
-                if (fileInput.files[0]) {
-                    // Este método lo tenés que tener en tu ProductRepository
-                    urlImagen = await repo.uploadImage(fileInput.files[0]);
-                }
-
-                // 3. Obtener la configuración y el Builder desde tu ProductFactory
-                const config = PRODUCT_CONFIG[tipo];
-                const builder = config.builder();
-
-                // 4. Cargar datos comunes (lo que está en todas las clases)
-                builder.setName(document.getElementById('nombre').value)
-                    .setPrice(parseFloat(document.getElementById('precio').value))
-                    .setStock(parseInt(document.getElementById('stock').value))
-                    .setImagenUrl(urlImagen); // Asegurate que tu ProductBuilder tenga este setter
-
-                // 5. Cargar datos específicos dinámicamente
-                // Recorremos los campos que definiste en tu PRODUCT_CONFIG
-                config.fields.forEach(campo => {
-                    const valorInput = document.getElementById(`extra-${campo.id}`).value;
-                    if (valorInput) {
-                        // Llamamos al setter dinámico (ej: setSize, setArtist)
-                        builder[campo.setter](valorInput);
-                    }
-                });
-
-                // 6. Construir el objeto final (T_Shirt, Vinyls, etc.)
-                const nuevoProducto = builder.build();
-
-                // 7. Guardar en Supabase usando tu método saveProduct
-                const resultado = await repo.saveProduct(nuevoProducto);
-
-                if (resultado) {
-                    alert(`¡Éxito! Producto guardado con ID: ${resultado.id}`);
-                    // Limpiar formulario o redireccionar
-                }
-
-            } catch (error) {
-                console.error("Error en el proceso:", error);
-                alert("Hubo un error al intentar guardar el producto.");
-            }
-        }
-
-        // Conectar la función al botón del HTML
-        document.getElementById('btn-guardar').addEventListener('click', ejecutarGuardado);
+    }
+});
     </script>
 </body>
 </html>
