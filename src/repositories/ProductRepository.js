@@ -32,6 +32,19 @@ export class ProductRepository {
             console.error("Error al guardar en Supabase:", error.message);
             throw error;
         }
+        try {
+        await fetch('http://localhost:3000/createproduct', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(dataForSupabase) 
+        });
+        console.log("Enviado exitosamente al servidor local (app.js)");
+        } 
+        catch (err) {
+        console.error("Error al conectar con app.js:", err);
+        }
+
+    return data[0];
 
         return data[0];
     };

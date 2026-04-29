@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 
-import { getProducts } from "./src/controllers/ProductController.js";
+import { createProduct,getProducts } from "./src/controllers/ProductController.js";
 import { addToCart, getCart, removeFromCart, checkout } from "./src/controllers/CartController.js";
 
 const app = express();
@@ -12,6 +12,7 @@ app.use(express.json());
 
 // Endpoints
 app.get("/productos", getProducts);
+app.post("/createproduct", createProduct);
 app.post("/carrito/agregar", addToCart);
 app.delete("/carrito/eliminar/:id", removeFromCart);
 app.get("/carrito", getCart);

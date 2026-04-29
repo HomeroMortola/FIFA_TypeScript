@@ -12,7 +12,7 @@ export const getProducts = async (req, res) => {
         console.error("Error al obtener productos:", error);
         res.status(500).json({ error: "Error al obtener productos" });
     }
-
+};
 export const createProduct = async (req, res) => {
     try {
         const productoCargado = req.body;
@@ -29,4 +29,3 @@ export const createProduct = async (req, res) => {
     }
 };
     
-}
