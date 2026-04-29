@@ -10,6 +10,8 @@ export class ProductBuilder {
         this.stock = 0
         this.productName = "";
         this.image_url = "";
+        this.description ="";
+        this.category = "";
         return this;
     }
 

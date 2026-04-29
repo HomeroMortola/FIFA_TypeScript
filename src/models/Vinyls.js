@@ -6,7 +6,7 @@ export class Vinyls extends Product {
    */
 
     constructor(builder) {
-        super(builder.id, builder.price, builder.stock, builder.productName, builder.image_url);
+        super(builder.id, builder.price, builder.stock, builder.productName, builder.image_url, builder.description, builder.category);
         this.artist = builder.artist;
         this.album = builder.album;
         this.year = builder.year;

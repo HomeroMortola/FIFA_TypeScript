@@ -6,6 +6,7 @@ export class GlasesBuilder extends ProductBuilder {
     constructor() {
         super();
         this.color = "";
+        this.shape = "";
     }
 
     reset() {
