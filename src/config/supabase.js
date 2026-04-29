@@ -1,12 +1,11 @@
 // src/config/supabase.js
 
-import { createClient } from '@supabase/supabase-js'
-import dotenv from 'dotenv'
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+import { ENV } from './env.js';
 
-dotenv.config()
-
-const supabaseUrl = process.env.SUPABASE_URL
-const supabaseKey = process.env.SUPABASE_KEY
+const supabaseUrl = ENV.SUPABASE_URL
+const supabaseKey = ENV\
+.SUPABASE_KEY
 
 if (!supabaseUrl || !supabaseKey) {
   console.error(" Error: SUPABASE_URL o SUPABASE_KEY no están definidas en el .env")

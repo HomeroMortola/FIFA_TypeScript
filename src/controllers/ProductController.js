@@ -1,4 +1,3 @@
-// src/controllers/ProductController.js
 
 import { ProductRepository } from "../repositories/ProductRepository.js";
 
