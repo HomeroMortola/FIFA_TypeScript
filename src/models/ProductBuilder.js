@@ -37,6 +37,25 @@ export class ProductBuilder {
         return this;
     }
 
+    /**
+     * @param {string} category
+     */
+    setCategory(category) {
+        if (!category || category.trim() === "") {
+            throw new Error("la categoría no puede estar vacía");
+        }
+        this.category = category;
+        return this;
+    }
+    /**
+     * @param {string} description
+     */
+    setDescription(description) {
+        this.description = description;
+        return this;
+    }
+    
+    
 
     /**
      * @param {number} stock

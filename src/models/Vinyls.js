@@ -1,5 +1,4 @@
 import { Product } from './Product.js';
-import { ProductBuilder } from './ProductBuilder.js';
 export class Vinyls extends Product {        
    /**
    * @param {VinylsBuilder} builder 

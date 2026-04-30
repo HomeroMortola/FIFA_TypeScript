@@ -23,7 +23,7 @@ export const PRODUCT_CONFIG = {
         ]
     },
 
-    Glases : {
+    Glasses : {
         builder: () => new GlasesBuilder(),
         fields: [
             {id: 'shape', label: 'Forma', type: 'text', setter: 'setShape'},
@@ -31,7 +31,7 @@ export const PRODUCT_CONFIG = {
         ]
     },
 
-    Bandanna : {
+    Bandana : {
         builder: () => new BandannaBuilder(),
         fields: [
             {id: 'size', label: 'Talla', type: 'select', options: ['S', 'M', 'L', 'XL'], setter: 'setSize'},

@@ -1,4 +1,7 @@
 // Generar ID de sesión única para el usuario
+
+import { ProductRepository } from '../src/repositories/ProductRepository.js';
+
 const getSessionId = () => {
     let sessionId = localStorage.getItem('sessionId');
     if (!sessionId) {
@@ -56,9 +59,12 @@ function render(list) {
 
     list.forEach(p => {
         // Usamos encodeURI por si la URL de la imagen tiene espacios
+        const card = document.createElement('div');
+        card.className = 'prod-card';
+
         const image_url = p.image_url ? p.image_url : 'https://via.placeholder.com/300';
         
-        grid.innerHTML += `
+        card.innerHTML += `
             <div class="prod-card">
                 <div class="prod-img-container">
                     <img src="${image_url}" alt="${p.name}" class="prod-img">
@@ -71,11 +77,13 @@ function render(list) {
                 </div>
             </div>
         `;
-        grid.appendChild(card);
+        
 
         card.querySelector('.buy-btn').addEventListener('click', () => {
             agregarAlCarrito(p, p.id);
+            
         });
+        grid.appendChild(card);
     });
 }
 
@@ -85,16 +93,8 @@ function renderExtraInfo(p) {
     return '';
 }
 
-function comprar(nombre) {
-    alert(`Añadiste ${nombre} al carrito.`);
-}
-
 // Arranca cuando carga el DOM
 document.addEventListener('DOMContentLoaded', fetchInventory);
-
-function comprar(nombre) {
-    alert(`Has seleccionado: ${nombre}. ¡Próximamente podrás finalizar tu compra!`);
-}
 
 // Toggle del panel del carrito
 function toggleCart() {

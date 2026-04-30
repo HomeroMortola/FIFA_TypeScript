@@ -1,4 +1,4 @@
-import { Product } from './Product.js';
+import { Bandanna } from './Bandanna.js';
 import { ProductBuilder } from './ProductBuilder.js';
 
 export class BandannaBuilder extends ProductBuilder {

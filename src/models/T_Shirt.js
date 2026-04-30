@@ -1,3 +1,4 @@
+import { Product } from './Product.js';
 export class T_Shirt extends Product {        
    /**
    * @param {T_ShirtBuilder} builder 

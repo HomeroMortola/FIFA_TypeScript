@@ -6,26 +6,41 @@ import { PRODUCT_CONFIG } from '../utils/ProductFactory.js';
             const { data, error } = await supabase.from('products').select('*').eq('state', true);
             if (error) throw error;
     
-            return data.map(item => this.mapToProductObject(item));
+            return (data || [])
+            .map(item => this.mapToProductObject(item))
+            .filter(p => p !== null); 
         }
 
     mapToProductObject(item) {
-        const config = PRODUCT_CONFIG[item.category];
+        const rawCategory = item.category ? item.category.trim() : "";
+        const config = PRODUCT_CONFIG[rawCategory];
+    
+        
+        if (!config) {
+            console.error(`ERROR: La categoría "${rawCategory}" (del producto ${item.name}) no existe en PRODUCT_CONFIG.`);
+            console.log("Categorías disponibles:", Object.keys(PRODUCT_CONFIG));
+            return null;
+        }
 
-        const builder = config.builder();
+        const builder = config.builder();   
 
         
-        builder.setName(item.nombre)
-               .setPrice(item.precio)
-               .setStock(item.stock)
-               .setCategory(item.category)
-               .setDescription(item.descripcion);
+        builder.setName(item.name);
+        builder.setPrice(item.price);
+        builder.setStock(item.stock ?? 0);
+        builder.setCategory(item.category.trim());  
+        builder.setDescription(item.description);
+        builder.setImageUrl(item.image_url);
 
         
+        if (item.metadata) {
         config.fields.forEach(campo => {
-        const valorExtra = item.metadata[campo.id];
-        builder[campo.setter]?.(valorExtra);
+            const valorExtra = item.metadata[campo.id];
+            if (valorExtra && builder[campo.setter]) {
+                builder[campo.setter](valorExtra);
+            }
         });
+    }
         
         return builder.build();
     }
