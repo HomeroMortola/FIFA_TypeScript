@@ -11,11 +11,6 @@ import { product_config } from '../utils/ProductFactory.js';
 
     mapToProductObject(item) {
         const config = PRODUCT_CONFIG[item.category];
-        
-        if (!config) {
-            console.warn(`No hay configuración para la categoría: ${item.category}`);
-            return item; 
-        }
 
         const builder = config.builder();
 
@@ -27,15 +22,10 @@ import { product_config } from '../utils/ProductFactory.js';
                .setDescription(item.descripcion);
 
         
-        if (item.metadata) {
-            config.fields.forEach(campo => {
-                const valorExtra = item.metadata[campo.id];
-                if (valorExtra && builder[campo.setter]) {
-                    builder[campo.setter](valorExtra);
-                }
-            });
-        }
-
+        config.fields.forEach(campo => {
+        const valorExtra = item.metadata[campo.id];
+        builder[campo.setter]?.(valorExtra);
+        });
         
         return builder.build();
     }

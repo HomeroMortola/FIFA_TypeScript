@@ -6,7 +6,7 @@ const productRepository = new ProductRepository();
 export const getProducts = async (req, res) => {
     try {
         const products = await productRepository.getProducts();
-        res.json(products);
+        res.json(products ?? []);
     }
     catch (error) {
         console.error("Error al obtener productos:", error);
@@ -16,14 +16,13 @@ export const getProducts = async (req, res) => {
 
 export const createProduct = async (req, res) => {
     try {
-        const productoCargado = req.body;
+        const newProduct = await productRepository.saveProduct(req.body);
         
         // Acá podrías validarlo o hacer algo extra antes de responder
-        console.log("Nuevo producto recibido:", productoCargado);
-
+        console.log("Nuevo producto recibido:", newProduct);
         res.status(201).json({
             message: "Producto recibido por el servidor local",
-            data: productoCargado
+            data: newProduct
         });
     } catch (error) {
         res.status(500).json({ error: error.message });
